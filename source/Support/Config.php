@@ -10,8 +10,8 @@ define("CONF_DB_NAME", "fullstackphp");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://www.localhost/phptest/fsphplib");
-define("CONF_URL_ADMIN", CONF_URL_BASE . "/admin");
+define("CONF_URL_BASE", "https://www.http://localhost:15001/fsphp");
+define("CONF_URL_ADMIN", "/admin");
 
 /**
  * SITE
