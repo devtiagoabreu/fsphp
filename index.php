@@ -26,17 +26,17 @@ $route->get("/sobre", "Web:about");
 $route->namespace("Source\App")->group("/ops");
 $route->get("/{errcode}", "Web:error");
 
-/** 
-* ROUTE
-*/
+/**
+ * ROUTE
+ */
 $route->dispatch();
 
-/** 
-* ERROR REDIRECT
-*/
-  if ($route->error()){
-    $route->redirect("/ops/{$route->error()}");
-  }
 
+/**
+ * ERROR REDIRECT
+ */
+if ($route->error()) {
+    $route->redirect("/ops/{$route->error()}");
+}
 
 ob_end_flush();
