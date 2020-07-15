@@ -146,6 +146,11 @@ function url(string $path = null): string
     return CONF_URL_BASE;
 }
 
+function url_back(): string
+{
+    return($_SERVER['HTTP_REFERER'] ?? url());
+}
+
 function theme(string $path = null): string
 {
     if (strpos($_SERVER['HTTP_HOST'], "localhost")){
