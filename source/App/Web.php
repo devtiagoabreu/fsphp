@@ -80,6 +80,51 @@ class Web extends Controller
     ]);
   }
 
+  public function login(): void
+  {
+    $head = $this->seo->render(
+      
+      "Entrar - " . CONF_SITE_NAME,
+      CONF_SITE_DESC,
+      url("/entrar"),
+      theme("/assets/images/share.jpg")
+    );
+
+    echo $this->view->render("auth-login", [
+      "head"=>$head 
+    ]);
+  }
+
+  public function forget(): void
+  {
+    $head = $this->seo->render(
+      
+      "Recuperar Senha - " . CONF_SITE_NAME,
+      CONF_SITE_DESC,
+      url("/recuperar"),
+      theme("/assets/images/share.jpg")
+    );
+
+    echo $this->view->render("auth-forget", [
+      "head"=>$head 
+    ]);
+  }
+
+  public function register(): void
+  {
+    $head = $this->seo->render(
+      
+      "Criar Conta - " . CONF_SITE_NAME,
+      CONF_SITE_DESC,
+      url("/cadastrar"),
+      theme("/assets/images/share.jpg")
+    );
+
+    echo $this->view->render("auth-register", [
+      "head"=>$head 
+    ]);
+  }
+
 
   public function terms(): void
   {
