@@ -182,7 +182,7 @@ class Web extends Controller
                 $error->title = "Estamos enfrentando problemas!";
                 $error->message = "Parece que nosso serviço não está diponível no momento. Já estamos vendo isso mas caso precise, envie um e-mail :)";
                 $error->linkTitle = "ENVIAR E-MAIL";
-                $error->link = "mailto:"  ;//. CONF_MAIL_SUPPORT;
+                $error->link = "mailto:". CONF_MAIL_SUPPORT;
                 break;
 
             case "manutencao":
