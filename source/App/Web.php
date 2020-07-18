@@ -125,6 +125,36 @@ class Web extends Controller
     ]);
   }
 
+  public function confirm(): void
+  {
+    $head = $this->seo->render(
+      
+      "Confirme seu cadastro - " . CONF_SITE_NAME,
+      CONF_SITE_DESC,
+      url("/confirma"),
+      theme("/assets/images/share.jpg")
+    );
+
+    echo $this->view->render("optin-confirm", [
+      "head"=>$head 
+    ]);
+  }
+
+  public function success(): void
+  {
+    $head = $this->seo->render(
+      
+      "Bem-vindo(a) ao " . CONF_SITE_NAME,
+      CONF_SITE_DESC,
+      url("/obrigado"),
+      theme("/assets/images/share.jpg")
+    );
+
+    echo $this->view->render("optin-success", [
+      "head"=>$head 
+    ]);
+  }
+
 
   public function terms(): void
   {
