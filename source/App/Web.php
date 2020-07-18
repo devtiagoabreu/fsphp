@@ -44,6 +44,22 @@ class Web extends Controller
     ]);
   }
 
+  public function terms(): void
+  {
+    $head = $this->seo->render(
+      
+      CONF_SITE_NAME . " - Termos de uso",
+      CONF_SITE_DESC,
+      url("/termos"),
+      theme("/assets/images/share.jpg")
+    );
+
+    echo $this->view->render("terms", [
+      "head"=>$head,
+      "video" => "o33OxhNWd5o"  
+    ]);
+  }
+
   public function error(array $data): void
     {
         $error = new \stdClass();
