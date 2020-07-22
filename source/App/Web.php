@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use Source\Core\Controller;
+use Source\Models\User;
 use Source\Support\Pager;
 
 class Web extends Controller
