@@ -7,6 +7,7 @@ use Source\Models\Faq\Channel;
 use Source\Models\Faq\Question;
 use Source\Models\User;
 use Source\Models\Category;
+use Source\Models\Post;
 use Source\Support\Pager;
 
 class Web extends Controller
@@ -34,7 +35,12 @@ class Web extends Controller
 
     echo $this->view->render("home", [
       "head"=>$head,
-      "video"=>"o33OxhNWd5o"  
+      "video"=>"o33OxhNWd5o", 
+      "blog"=> (new Post())
+          ->find()
+          ->order("post_at DESC")
+          ->limit(6)
+          ->fetch(true)
     ]);
   }
 
