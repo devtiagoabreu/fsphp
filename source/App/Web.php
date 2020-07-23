@@ -23,9 +23,7 @@ class Web extends Controller
      * $model = (new Category())->find()->fetch(true); ou $model = (new Category())->findByUri("controle");
      * var_dump($model);
      */
-    $model = (new Category())->findByUri("controle");
-    var_dump($model);
-
+    
     $head = $this->seo->render(
       
       CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
