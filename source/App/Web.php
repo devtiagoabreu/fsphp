@@ -3,6 +3,8 @@
 namespace Source\App;
 
 use Source\Core\Controller;
+use Source\Models\Faq\Channel;
+use Source\Models\Faq\Question;
 use Source\Models\User;
 use Source\Support\Pager;
 
@@ -31,6 +33,12 @@ class Web extends Controller
 
   public function about(): void
   {
+    /**
+     * DEBUG COM VAR_DUMP
+     * $model = (new Question())->find()->fetch(true);
+     * var_dump($model);
+     **/ 
+    
     $head = $this->seo->render(
       
       "Descubra o " . CONF_SITE_NAME . " - " . CONF_SITE_DESC,
@@ -41,7 +49,11 @@ class Web extends Controller
 
     echo $this->view->render("about", [
       "head"=>$head,
-      "video"=>"o33OxhNWd5o"  
+      "video"=>"o33OxhNWd5o",
+      "faq" => (new Question())
+            ->find("channel_id = :id", "id=1", "question, response")
+            ->order("order_by")
+            ->fetch(true)
     ]);
   }
 
