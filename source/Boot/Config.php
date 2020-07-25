@@ -22,6 +22,12 @@ define("CONF_SITE_TITLE", "Gerencie suas contas com o melhor café");
 define("CONF_SITE_DESC", "O CafeControl é um gerenciador de contas simples, poderoso e gratuito. O prazer de tomar um café e ter o controle total de suas contas.");
 define("CONF_SITE_LANG", "pt_BR");
 define("CONF_SITE_DOMAIN", "upinside.com.br");
+define("CONF_SITE_ADDR_STREET", "Rua João Rossi");
+define("CONF_SITE_ADDR_NUMBER", "325");
+define("CONF_SITE_ADDR_COMPLEMENT", "");
+define("CONF_SITE_ADDR_CITY", "Santa Bárbara d'Oeste");
+define("CONF_SITE_ADDR_STATE", "SP");
+define("CONF_SITE_ADDR_ZIPCODE", "13458-630");
 
 /**
  * SOCIAL
@@ -84,12 +90,12 @@ define("CONF_IMAGE_QUALITY", ["jpg" => 75, "png" => 5]);
 /**
  * MAIL
  */
-define("CONF_MAIL_HOST", "smtp.sendgrid.net");
+define("CONF_MAIL_HOST", "smtp.gmail.com");
 define("CONF_MAIL_PORT", "587");
-define("CONF_MAIL_USER", "apikey");
-define("CONF_MAIL_PASS", "**************************");
-define("CONF_MAIL_SENDER", ["name" => "Robson V. Leite", "address" => "cursos@upinside.com.br"]);
-define("CONF_MAIL_SUPPORT", "suporte@upinside.com.br");
+define("CONF_MAIL_USER", "opensourcecontrol@gmail.com");
+define("CONF_MAIL_PASS", "ym2d6kx7x9");
+define("CONF_MAIL_SENDER", ["name" => "Tiago de Abreu", "address" => "opensourcecontrol@gmail.com"]);
+define("CONF_MAIL_SUPPORT", "opensourcecontrol@gmail.com");
 define("CONF_MAIL_OPTION_LANG", "br");
 define("CONF_MAIL_OPTION_HTML", true);
 define("CONF_MAIL_OPTION_AUTH", true);
