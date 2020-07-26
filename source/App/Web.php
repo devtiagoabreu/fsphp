@@ -12,6 +12,7 @@ use Source\Models\Category;
 use Source\Models\Post;
 use Source\Support\Message;
 use Source\Support\Pager;
+use Source\Support\Email;
 
 class Web extends Controller
 {
@@ -266,6 +267,58 @@ class Web extends Controller
     ]);
   }
   
+/**
+   * SITE FORGET RESET
+   * @param array $data
+   */
+  public function reset(array $data): void
+  {
+    if (!empty($data['csrf'])){
+      if (!csrf_verify($data)){
+        $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+        echo json_encode($json);
+        return;
+      }
+
+      if (empty($data["password"]) || empty($data["password_re"])) {
+        $json['message'] = $this->message->info("Informe e repita a senha para continuar.")->render();
+        echo json_encode($json);
+        return;
+      }
+
+      list($email, $code) = explode("|", $data["code"]);
+      $auth = new Auth();
+
+      if ($auth->reset($email, $code, $data["password"], $data["password_re"])) {
+        $this->message->success("Senha alterada com sucesso! Vamos controlar?")->flash();
+        $json["redirect"] = url("/entrar");
+      } else {
+        $json["message"] = $auth->message()->render();
+      }
+
+      echo json_encode($json);
+      return;
+
+
+
+
+
+    }
+
+    $head = $this->seo->render(
+      "Crie sua nova senha no " . CONF_SITE_NAME,
+      CONF_SITE_DESC,
+      url("/recuperar"),
+      theme("/assets/image/share.jpg")
+    );
+
+    echo $this->view->render("auth-reset", [
+      "head" => $head,
+      "code" => $data["code"]
+    ]);
+
+  }
+
   /**
    * SITE REGISTER
    * @param null|array $data
