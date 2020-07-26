@@ -59,11 +59,11 @@ define("CONF_PASSWD_OPTION", ["cost" => 10]);
 /**
  * MESSAGE
  */
-define("CONF_MESSAGE_CLASS", "trigger");
-define("CONF_MESSAGE_INFO", "info icon-info");
-define("CONF_MESSAGE_SUCCESS", "success icon-check-square-o");
-define("CONF_MESSAGE_WARNING", "warning icon-warning");
-define("CONF_MESSAGE_ERROR", "error icon-warning");
+define("CONF_MESSAGE_CLASS", "");
+define("CONF_MESSAGE_INFO", "");
+define("CONF_MESSAGE_SUCCESS", "");
+define("CONF_MESSAGE_WARNING", "");
+define("CONF_MESSAGE_ERROR", "");
 
 /**
  * VIEW
