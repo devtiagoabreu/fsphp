@@ -10,8 +10,8 @@ define("CONF_DB_NAME", "fullstackphp");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://www.atriostech.com.br");
-define("CONF_URL_TEST", "https://www.localhost/fsphp");
+define("CONF_URL_BASE", "http://www.atriostech.com.br");
+define("CONF_URL_TEST", "http://www.localhost/fsphp");
 define("CONF_URL_ADMIN", "/admin");
 
 /**

@@ -10,6 +10,7 @@ use Source\Models\Faq\Question;
 use Source\Models\User;
 use Source\Models\Category;
 use Source\Models\Post;
+use Source\Support\Message;
 use Source\Support\Pager;
 
 class Web extends Controller
@@ -222,8 +223,36 @@ class Web extends Controller
     ]);
   }
 
-  public function forget(): void
+  /**
+   * SITE PASSWORD FORGET
+   * @param null|array $data
+   */
+  public function forget(?array $data): void
   {
+    if (!empty($data['csrf'])){
+      if (!csrf_verify($data)){
+        $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+        echo json_encode($json);
+        return;
+      }
+     
+      if (empty($data["email"])) {
+        $json['message'] = $this->message->info("Informe seu e-mail para continuar")->render();
+        echo json_encode($json);
+        return;
+      }
+
+      $auth = new Auth();
+      if ($auth->forget($data["email"])) {
+        $json["message"] = $this->message->success("Acesse seu email para recuperar a senha")->render();
+      }else {
+        $json["message"] = $auth->message()->render();
+      }
+      echo json_encode($json);
+      return;
+  
+    } 
+
     $head = $this->seo->render(
       
       "Recuperar Senha - " . CONF_SITE_NAME,
@@ -236,7 +265,7 @@ class Web extends Controller
       "head"=>$head 
     ]);
   }
-
+  
   /**
    * SITE REGISTER
    * @param null|array $data
