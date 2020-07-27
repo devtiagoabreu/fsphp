@@ -10,25 +10,21 @@ use Source\Models\Category;
 use Source\Models\Post;
 use Source\Support\Email;
 use Source\Support\Pager;
+use Source\Models\Report\Access;
 
 class Web extends Controller
 {
   public function __construct()
   {
     parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
-     
+
+    $access = (new Access())->report();
+         
   }
 
   public function home(): void
   {
-    /**
-     * Debug
-     * $model = (new Category())->find()->fetch(true); ou $model = (new Category())->findByUri("controle");
-     * var_dump($model);
-     */
-    
     $head = $this->seo->render(
-      
       CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
       CONF_SITE_DESC,
       url(),
