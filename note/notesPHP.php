@@ -29,3 +29,13 @@
     */
     $access = (new Access())->report();
     var_dump($access);
+
+    /**
+    * Debugs by 10.07 - Usuários online e navegação
+    * OBS: Método construtor do controlador Web.php após o (new Access())->report();
+    */
+    $online = new Online();
+    var_dump($online->findByActive(true), $online->findByActive());
+    //Método report da classe Online, antes do último return
+    var_dump($session->all());
+

@@ -11,6 +11,7 @@ use Source\Models\Post;
 use Source\Support\Email;
 use Source\Support\Pager;
 use Source\Models\Report\Access;
+use Source\Models\Report\Online;
 
 class Web extends Controller
 {
@@ -18,8 +19,8 @@ class Web extends Controller
   {
     parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/");
 
-    $access = (new Access())->report();
-         
+    (new Access())->report();
+    (new Online())->report();
   }
 
   public function home(): void
