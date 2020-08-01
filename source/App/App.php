@@ -4,17 +4,28 @@ namespace Source\App;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Support\Message;
+use Source\Models\Report\Access;
+use Source\Models\Report\Online;
 
 class App extends Controller
 {
+  /** @var User */
+  private $user;
+
+  /**
+   * App constructor
+   */
   public function __construct()
   {
-    parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_APP);
+    parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_APP . "/");
 
-    if (!Auth::user()){
+    if (!$this->user = Auth::user()){
       $this->message->warning("Efetue login para acessar o APP.")->flash();
       redirect("/entrar");
     }
+
+    (new Access())->report();
+    (new Online())->report();
     
   }
 
@@ -23,9 +34,7 @@ class App extends Controller
    */
   public function home()
   {
-    echo flash();
-    var_dump(Auth::user());
-    echo "<a title='Sair' href='". url("/app/sair") ."'>Sair</a>";
+    echo $this->view->render("home", []);
   }
 
   /**
