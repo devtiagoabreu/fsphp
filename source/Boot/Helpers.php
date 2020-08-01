@@ -346,5 +346,22 @@ function request_limit(string $key, int $limit = 5, int $seconds = 60): bool
     ]);
 
     return false;
-
 }
+
+/**
+ * @param string $field
+ * @param string $value
+ * @return bool
+ */
+function request_repeat(string $field, string $value): bool
+{
+    $session = new \Source\Core\Session();
+
+    if($session->has($field) && $session->$field == $value) {
+        return true;
+    }
+
+    $session->set($field, $value);
+    return false;
+}
+ 
