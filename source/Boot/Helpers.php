@@ -85,6 +85,17 @@ function str_title(string $string): string
 }
 
 /**
+ * @param string $text
+ * @return string
+ */
+function str_textarea(string $text): string
+{
+    $text = filter_var($text, FILTER_SANITIZE_STRIPPED);
+    $arrayReplace = ["&#10;","&#10;&#10;","&#10;&#10;&#10;","&#10;&#10;&#10;&#10;","&#10;&#10;&#10;&#10;&#10;"];
+    return "<p>".str_replace($arrayReplace, "</p><p>", $text)."</p>";
+}
+
+/**
  * @param string $string
  * @param int $limit
  * @param string $pointer
@@ -119,6 +130,15 @@ function str_limit_chars(string $string, int $limit, string $pointer = "..."): s
 
     $chars = mb_substr($string, 0, mb_strrpos(mb_substr($string, 0, $limit), " "));
     return "{$chars}{$pointer}";
+}
+
+/**
+ * @param string $price
+ * @return string
+ */
+function str_price(string $price): string
+{
+    return number_format($price, 2, ",", ".");
 }
 
 /**
@@ -174,6 +194,15 @@ function redirect(string $url): void
  * ##################
  * 
  */
+
+ /**
+ * @return \Source\Models\User | null
+ */
+function user(): ?\Source\Models\User
+{
+    return \Source\Models\Auth::user();
+}
+
 /**
  * @param string|null $path
  * @param string $theme
